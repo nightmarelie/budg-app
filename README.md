@@ -24,12 +24,12 @@ Visit the [Nx Documentation](https://nx.dev) to learn more.
 npx create-nx-workspace@latest budg-app --preset=npm --packageManager=yarn
 ```
 
-### NestJS
+### NestJS - Visit the [Nx Nest Documentation](https://nx.dev/packages/nest) to learn more.
 
 add nest `yarn add -D -W @nrwl/nest`
 generate server `yarn nx g @nrwl/nest:app server`
 
-### NextJS
+### NextJS - Visit the [Nx Next Documentation](https://nx.dev/packages/next) to learn more.
 
 add next `yarn add -D -W @nrwl/next`
 add typescript `yarn add -D -W typescript`
