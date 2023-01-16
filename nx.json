@@ -20,5 +20,18 @@
     "lint": {
       "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
     }
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "babel": true
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    }
   }
 }
