@@ -2,7 +2,10 @@
   "name": "budg-app",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "run:server": "yarn nx serve server",
+    "run:client": "yarn nx serve client"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^9.0.0",

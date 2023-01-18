@@ -34,3 +34,8 @@ generate server `yarn nx g @nrwl/nest:app server`
 add next `yarn add -D -W @nrwl/next`
 add typescript `yarn add -D -W typescript`
 generate client `nx g @nrwl/next:app client`
+
+### Scripts
+
+to run server `yarn nx serve server` or `yarn run:server`
+to run client `yarn nx serve client` or `yarn run:client`
