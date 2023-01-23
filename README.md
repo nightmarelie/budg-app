@@ -35,6 +35,11 @@ add next `yarn add -D -W @nrwl/next`
 add typescript `yarn add -D -W typescript`
 generate client `nx g @nrwl/next:app client`
 
+### Expo - Visit the
+
+add next `yarn add -D -W @nrwl/expo`
+generate mobile `nx g @nrwl/expo:app mobile`
+
 ### Scripts
 
 to run server `yarn nx serve server` or `yarn run:server`
