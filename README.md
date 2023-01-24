@@ -13,3 +13,7 @@
 ### Project structure
 
 `mkdir apps packages` - Create an apps and packages. We will use app centric repositories
+
+### Workspace maim file
+
+`touch pnpm-workspace.yaml`
