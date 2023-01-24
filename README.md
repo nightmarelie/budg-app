@@ -1,3 +1,5 @@
+# Budge APP or BA
+
 # Process of creation
 
 ## Initialization
@@ -17,3 +19,11 @@
 ### Workspace maim file
 
 `touch pnpm-workspace.yaml`
+
+### Add nest cli
+
+`pnpm add -D -w @nestjs/cli` - Run this command from the root of the project. I suppose that it will be our root helper. For example: I want to create microservices based on NestJS
+
+### Add a server for now. We will split this app into small microservices...
+
+`npx nest new server` - Create a new NestJS project
