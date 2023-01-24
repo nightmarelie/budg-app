@@ -27,3 +27,7 @@
 ### Add a server for now. We will split this app into small microservices...
 
 `npx nest new server` - Create a new NestJS project
+
+#### Server scripts:
+
+`pnpm --filter server start:dev` or `pnpm apps:server start:dev` - run the server in the dev mode
