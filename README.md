@@ -7,6 +7,8 @@
 ### Prerequisite
 
 `brew install pnpm` - Installing pnpm to the system
+`nvm alias default 16.18` - nvm set default node.js version 16.18
+`nvm use`
 
 ### Project init
 
