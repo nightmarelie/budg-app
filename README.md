@@ -2,6 +2,12 @@
 
 # Process of creation
 
+# Technologies
+
+- [NestJS](https://docs.nestjs.com/)
+- [NextJS](https://nextjs.org/)
+- [Expo](https://docs.expo.dev/)
+
 ## Initialization
 
 ### Prerequisite
@@ -9,6 +15,12 @@
 `brew install pnpm` - Installing pnpm to the system
 `nvm alias default 16.18` - nvm set default node.js version 16.18
 `nvm use`
+
+### Reference
+
+- [Setup a Monorepo with PNPM](https://dev.to/nx/setup-a-monorepo-with-pnpm-workspaces-and-speed-it-up-with-nx-1eem)
+- [PNPM Workspace](https://pnpm.io/workspaces)
+- [Expo + PNPM](https://github.com/byCedric/expo-monorepo-benchmark/tree/main/pnpm-v7)
 
 ### Project init
 
@@ -22,7 +34,7 @@
 
 `touch pnpm-workspace.yaml`
 
-### Add nest cli
+## Server
 
 `pnpm add -D -w @nestjs/cli` - Run this command from the root of the project. I suppose that it will be our root helper. For example: I want to create microservices based on NestJS
 
@@ -32,4 +44,21 @@
 
 #### Server scripts:
 
-`pnpm --filter server start:dev` or `pnpm apps:server start:dev` - run the server in the dev mode
+`pnpm apps:server start:dev` - run the server in the dev mode
+
+## Client
+
+## Mobile
+
+`pnpm add -D -w eas-cli` - Add expo cli
+`npx create-expo-app mobile` - Init the mobile app. Was executed in an apps directory
+`eas init --id {{ID}}` - Connect expo to
+
+### PNPM + Expo
+
+[Monorepos](https://docs.expo.dev/guides/monorepos/) - docs
+[PNPM](https://github.com/byCedric/expo-monorepo-benchmark) - examples
+
+#### Mobile scripts:
+
+`pnpm apps:mobile start` - run the mobile in the dev mode

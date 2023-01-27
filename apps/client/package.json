@@ -1,5 +1,5 @@
 {
-  "name": "client",
+  "name": "@ba/client",
   "version": "0.1.0",
   "private": true,
   "scripts": {
