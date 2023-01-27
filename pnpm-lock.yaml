@@ -43,11 +43,13 @@ importers:
   apps/mobile:
     specifiers:
       '@babel/core': ^7.12.9
+      '@types/react-native': ~0.70.6
       expo: ~47.0.12
       expo-status-bar: ~1.4.2
       react: 18.1.0
       react-native: 0.70.5
     dependencies:
+      '@types/react-native': 0.70.9
       expo: 47.0.13_@babel+core@7.20.12
       expo-status-bar: 1.4.2
       react: 18.1.0
@@ -3345,6 +3347,12 @@ packages:
 
   /@types/react-dom/18.0.10:
     resolution: {integrity: sha512-E42GW/JA4Qv15wQdqJq8DL4JhNpB3prJgjgapN3qJT9K2zO5IIAQh4VXvCEDupoqAwnz0cY4RlXeC/ajX5SFHg==}
+    dependencies:
+      '@types/react': 18.0.27
+    dev: false
+
+  /@types/react-native/0.70.9:
+    resolution: {integrity: sha512-0C6sIo13ztzM2llaWdTq0Vpscx3VdU0T8F45kEurWv3l5n+BHm/Mkr8Z+N29eXDYGhTvCz5y2jegB8JyiVa5kw==}
     dependencies:
       '@types/react': 18.0.27
     dev: false
