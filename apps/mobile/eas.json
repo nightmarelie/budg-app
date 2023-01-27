@@ -1,7 +1,11 @@
 {
   "build": {
     "development": {
+      "developmentClient": true,
       "distribution": "internal",
+      "ios": {
+        "resourceClass": "m1-medium"
+      },
       "android": {
         "buildType": "apk"
       }
@@ -10,6 +14,11 @@
       "distribution": "store",
       "android": {
         "buildType": "app-bundle"
+      },
+      "production": {
+        "ios": {
+          "resourceClass": "m1-medium"
+        }
       }
     }
   }
