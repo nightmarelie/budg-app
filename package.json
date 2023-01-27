@@ -1,16 +1,18 @@
 {
-  "name": "ba",
+  "name": "@ba/monorepo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "apps:server": "pnpm --filter server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "apps:server": "pnpm --filter @ba/server",
+    "apps:mobile": "pnpm --filter @ba/mobile",
+    "apps:client": "pnpm --filter @ba/client"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@nestjs/cli": "^9.1.8"
+    "@nestjs/cli": "^9.1.8",
+    "eas-cli": "^3.4.1"
   }
 }
