@@ -10,7 +10,11 @@
 
 ## Initialization
 
-`pnpm i` - execute to install all dependencies
+`pnpm i` or `pnpm i --force` - execute to install all dependencies
+
+## Clear all dependencies
+
+`pnpm clear:all`
 
 ### Prerequisite
 
@@ -62,8 +66,8 @@ Visit [expo.dev](https://expo.dev/). To create an account.
 
 ### PNPM + Expo
 
-[Monorepos](https://docs.expo.dev/guides/monorepos/) - docs
-[PNPM](https://github.com/byCedric/expo-monorepo-benchmark) - examples
+- [Monorepos](https://docs.expo.dev/guides/monorepos/) - docs
+- [PNPM](https://github.com/byCedric/expo-monorepo-benchmark) - examples
 
 #### Mobile scripts:
 
@@ -75,8 +79,10 @@ Visit [expo.dev](https://expo.dev/). To create an account.
 `echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js` - Add config
 
 To lint commits before they are created you can use Husky's commit-msg hook:
-`pnpm add -D -w husky` - Install Husky v6
-`pnpm husky install` -
+
+- `pnpm add -D -w husky` - Install Husky v6
+- `pnpm husky install` - Activate hooks
+- `pnpm husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'`
 
 ### Docs
 

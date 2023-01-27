@@ -6,7 +6,8 @@
   "scripts": {
     "apps:server": "pnpm --filter @ba/server",
     "apps:mobile": "pnpm --filter @ba/mobile",
-    "apps:client": "pnpm --filter @ba/client"
+    "apps:client": "pnpm --filter @ba/client",
+    "clear:all": "pnpm -r clear && rimraf node_modules"
   },
   "keywords": [],
   "author": "",
