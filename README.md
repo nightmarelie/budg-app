@@ -34,7 +34,7 @@
 
 `touch pnpm-workspace.yaml`
 
-## Server
+## Server. Init
 
 `pnpm add -D -w @nestjs/cli` - Run this command from the root of the project. I suppose that it will be our root helper. For example: I want to create microservices based on NestJS
 
@@ -46,13 +46,17 @@
 
 `pnpm apps:server start:dev` - run the server in the dev mode
 
-## Client
+## Client. Init
 
-## Mobile
+`pnpm create next-app --typescript` - Run this command from the root of the project.
+
+## Mobile. Init
+
+Visit [expo.dev](https://expo.dev/). To create an account.
 
 `pnpm add -D -w eas-cli` - Add expo cli
 `npx create-expo-app mobile` - Init the mobile app. Was executed in an apps directory
-`eas init --id {{ID}}` - Connect expo to
+`eas init --id {{ID}}` - Connect expo to the server (expo.dev)
 
 ### PNPM + Expo
 
