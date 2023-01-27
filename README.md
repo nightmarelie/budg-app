@@ -10,6 +10,8 @@
 
 ## Initialization
 
+`pnpm i` - execute to install all dependencies
+
 ### Prerequisite
 
 `brew install pnpm` - Installing pnpm to the system
@@ -66,3 +68,16 @@ Visit [expo.dev](https://expo.dev/). To create an account.
 #### Mobile scripts:
 
 `pnpm apps:mobile start` - run the mobile in the dev mode
+
+## Git Conventional Commits. Init
+
+`pnpm add -D -w @commitlint/{config-conventional,cli}` - Run this command from the root of the project.
+`echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js` - Add config
+
+To lint commits before they are created you can use Husky's commit-msg hook:
+`pnpm add -D -w husky` - Install Husky v6
+`pnpm husky install` -
+
+### Docs
+
+[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)

@@ -12,7 +12,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
     "@nestjs/cli": "^9.1.8",
-    "eas-cli": "^3.4.1"
+    "eas-cli": "^3.4.1",
+    "husky": "^8.0.3"
   }
 }
