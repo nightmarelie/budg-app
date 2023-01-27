@@ -1,9 +1,10 @@
-# Budge APP or BA
+# Budge APP or BA (Monorepo)
 
 # Process of creation
 
 # Technologies
 
+- [PNPM workspaces](https://pnpm.io/workspaces)
 - [NestJS](https://docs.nestjs.com/)
 - [NextJS](https://nextjs.org/)
 - [Expo](https://docs.expo.dev/)
@@ -12,15 +13,47 @@
 
 `pnpm i` or `pnpm i --force` - execute to install all dependencies
 
-## Clear all dependencies
+## Adding a new dependency to the Workspace
+
+`pnpm add <package_to_add> --filter <workspace_name>`
+
+## Workspaces
+
+```
+. root (@ba/monorepo)
+├── apps
+│   ├── client (@ba/client)
+│   ├── mobile (@ba/mobile)
+│   └── server (@ba/server)
+```
+
+### Project structure
+
+`tree -I node_modules -L 2`
+
+```
+.
+├── README.md
+├── apps
+│   ├── client
+│   ├── mobile
+│   └── server
+├── commitlint.config.js
+├── package.json
+├── packages
+├── pnpm-lock.yaml
+└── pnpm-workspace.yaml
+```
+
+### Clear all dependencies & artifacts (build, cache, etc.)
 
 `pnpm clear:all`
 
 ### Prerequisite
 
-`brew install pnpm` - Installing pnpm to the system
-`nvm alias default 16.18` - nvm set default node.js version 16.18
-`nvm use`
+- `brew install pnpm` - Installing pnpm to the system
+- `nvm alias default 16.18` - nvm set default node.js version 16.18
+- `nvm use`
 
 ### Reference
 
