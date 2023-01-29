@@ -7,7 +7,8 @@
     "apps:server": "pnpm --filter @ba/server",
     "apps:mobile": "pnpm --filter @ba/mobile",
     "apps:client": "pnpm --filter @ba/client",
-    "clear:all": "pnpm -r clear && rimraf node_modules"
+    "clear:all": "pnpm --parallel -r clear && rimraf node_modules",
+    "build:all": "pnpm -r build"
   },
   "keywords": [],
   "author": "",
