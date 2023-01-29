@@ -124,3 +124,27 @@ To lint commits before they are created you can use Husky's commit-msg hook:
 ### Docs
 
 [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)
+
+## Running tasks with Nx
+
+`pnpm nx <target> <project>`
+
+### Examples:
+
+`pnpm nx start:dev @ba/server`
+
+#### Run commands in parallel across the projects
+
+`pnpm nx run-many --target=build --all`
+
+#### Or selectively specify projects with
+
+`pnpm nx run-many --target=build --projects=@ba/server,@ba/client,@ba/theme`
+
+#### Running just what changed
+
+`pnpm nx affected:<target>`
+
+#### Project Graph Visualization
+
+`pnpm nx graph`

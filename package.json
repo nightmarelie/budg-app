@@ -8,7 +8,9 @@
     "apps:mobile": "pnpm --filter @ba/mobile",
     "apps:client": "pnpm --filter @ba/client",
     "clear:all": "pnpm --parallel -r clear && rimraf node_modules",
-    "build:all": "pnpm -r build"
+    "build:all": "pnpm -r build",
+    "apps:client:dev": "pnpm nx dev @ba/client",
+    "show:graph": "pnpm nx graph"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +20,7 @@
     "@commitlint/config-conventional": "^17.4.2",
     "@nestjs/cli": "^9.1.8",
     "eas-cli": "^3.4.1",
-    "husky": "^8.0.3"
+    "husky": "^8.0.3",
+    "nx": "^15.6.3"
   }
 }
