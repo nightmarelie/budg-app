@@ -1,0 +1,21 @@
+{
+  "name": "@ba/theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/packages/theme/src/index.js",
+  "private": true,
+  "scripts": {
+    "build": "pnpm rimraf -- dist && tsc",
+    "clear": "pnpm rimraf -- node_modules dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@chakra-ui/react": "^2.4.9",
+    "react": "18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}

@@ -10,6 +10,7 @@
     "clear": "pnpm rimraf -- node_modules .next"
   },
   "dependencies": {
+    "@ba/theme": "workspace:^1.0.0",
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
