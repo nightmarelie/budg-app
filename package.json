@@ -8,9 +8,11 @@
     "apps:mobile": "pnpm --filter @ba/mobile",
     "apps:client": "pnpm --filter @ba/client",
     "clear:all": "pnpm --parallel -r clear && rimraf node_modules",
-    "build:all": "pnpm -r build",
-    "apps:client:dev": "pnpm nx dev @ba/client",
-    "show:graph": "pnpm nx graph"
+    "build:all": "pnpm nx run-many --target=build --projects=@ba/server,@ba/client,@ba/theme",
+    "apps:dev": "pnpm nx run-many --target=start:dev --verbose --projects=@ba/server,@ba/client",
+    "apps:prod": "pnpm nx run-many --target=start:prod --projects=@ba/server,@ba/client",
+    "show:graph": "pnpm nx graph",
+    "lint:all": "pnpm nx run-many --target=lint --projects=@ba/server,@ba/client"
   },
   "keywords": [],
   "author": "",
