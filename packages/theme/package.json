@@ -11,9 +11,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@chakra-ui/react": "^2.4.9",
-    "react": "18.2.0"
+  "perDependencies": {
+    "@chakra-ui/react": "*",
+    "@emotion/react": "*",
+    "@emotion/styled": "*",
+    "framer-motion": "*",
+    "react": "*"
   },
   "devDependencies": {
     "typescript": "^4.7.4"

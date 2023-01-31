@@ -59,6 +59,10 @@
 - `nvm alias default 16.18` - nvm set default node.js version 16.18
 - `nvm use`
 
+### Listing licenses
+
+`pnpm licenses list`
+
 ### Reference
 
 - [Setup a Monorepo with PNPM](https://dev.to/nx/setup-a-monorepo-with-pnpm-workspaces-and-speed-it-up-with-nx-1eem)
