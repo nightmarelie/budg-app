@@ -15,11 +15,11 @@
 
 ## Adding a new dependency to the Workspace
 
-`pnpm add <package_to_add> --filter <workspace_name>`
+`pnpm add <package_to_add> -F <workspace_name>`
 
 ## Linking a package with apps in the Workspace
 
-`pnpm add <package_to_add> --filter <workspace_name> --workspace`
+`pnpm add <package_to_add> -F <workspace_name> --workspace`
 
 ## Workspaces
 
