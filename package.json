@@ -27,5 +27,9 @@
   },
   "peerDependencies": {
     "expo-modules-autolinking": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=7"
   }
 }
