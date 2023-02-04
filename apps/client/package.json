@@ -30,6 +30,7 @@
     "xstate": "^4.35.3"
   },
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
     "cypress": "^12.5.0"
   },
   "optionalDependencies": {
