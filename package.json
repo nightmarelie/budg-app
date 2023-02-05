@@ -31,5 +31,8 @@
   "engines": {
     "node": ">=18",
     "pnpm": ">=7"
+  },
+  "dependencies": {
+    "swr": "^2.0.3"
   }
 }
