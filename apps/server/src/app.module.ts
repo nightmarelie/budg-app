@@ -4,11 +4,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import configuration from './config/configuration';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: ['.env', '.env.development', '.env.local'],
       isGlobal: true,
+      load: [configuration],
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
