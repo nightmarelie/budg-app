@@ -12,6 +12,7 @@ import configuration from './config/configuration';
       envFilePath: ['.env', '.env.development', '.env.local'],
       isGlobal: true,
       load: [configuration],
+      // [databaseConfig, authConfig]) // TODO: try to split config data in the future
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
