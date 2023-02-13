@@ -5,7 +5,7 @@ import { configuration, Configuration } from './config.configuration';
 @Controller('config')
 export class ConfigController {
   @Get()
-  getHello(): Configuration {
+  getConfiguration(): Configuration {
     return configuration();
   }
 }
