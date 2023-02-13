@@ -15,7 +15,7 @@ const validationSchema = Joi.object({
 });
 
 const validationOptions = {
-  allowUnknown: false,
+  allowUnknown: true,
   abortEarly: true,
 };
 

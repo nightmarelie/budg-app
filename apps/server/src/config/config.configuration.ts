@@ -11,3 +11,5 @@ export const configuration = () => ({
     type: process.env.DATABASE_TYPE,
   },
 });
+
+export type Configuration = ReturnType<typeof configuration>;
