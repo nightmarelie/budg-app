@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import configuration from './config/configuration';
+import { configuration, validationOptions, validationSchema } from './config';
 
 @Module({
   imports: [
@@ -12,7 +12,8 @@ import configuration from './config/configuration';
       envFilePath: ['.env', '.env.development', '.env.local'],
       isGlobal: true,
       load: [configuration],
-      // [databaseConfig, authConfig]) // TODO: try to split config data in the future
+      validationOptions,
+      validationSchema,
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
