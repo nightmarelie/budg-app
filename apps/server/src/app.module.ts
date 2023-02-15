@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { configuration, validationOptions, validationSchema } from './config';
 import { ConfigController } from './config/config.controller';
@@ -16,16 +16,20 @@ import { ConfigController } from './config/config.controller';
       validationOptions,
       validationSchema,
     }),
-    // TypeOrmModule.forRoot({
-    //   type: 'postgres',
-    //   host: 'localhost',
-    //   port: 3306,
-    //   username: 'root',
-    //   password: 'root',
-    //   database: 'test',
-    //   entities: [],
-    //   synchronize: true,
-    // }),
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      useFactory: (configService: ConfigService) =>
+        ({
+          type: configService.get('database.type'),
+          host: configService.get('database.host'),
+          port: configService.get('database.port'),
+          username: configService.get('database.username'),
+          password: configService.get('database.password'),
+          database: configService.get('database.database'),
+          entities: [],
+          synchronize: configService.get<boolean>('database.synchronize'),
+        } as TypeOrmModuleOptions),
+    }),
   ],
   controllers: [AppController, ConfigController],
   providers: [AppService],
