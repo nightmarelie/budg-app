@@ -6,6 +6,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 import { configuration, validationOptions, validationSchema } from './config';
 import { ConfigController } from './config/config.controller';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { ConfigController } from './config/config.controller';
           synchronize: configService.get<boolean>('database.synchronize'),
         } as TypeOrmModuleOptions),
     }),
+    UserModule,
   ],
   controllers: [AppController, ConfigController],
   providers: [AppService],
