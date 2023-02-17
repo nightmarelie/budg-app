@@ -4,6 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "db:init": "env-cmd --silent --no-override --fallback -f ./apps/server/.env",
+    "db:up": "pnpm db:init -- docker-compose -p budge-app -f ./dockerfiles/docker-compose.yml up -d",
+    "db:down": "pnpm db:init -- docker-compose -p budge-app -f ./dockerfiles/docker-compose.yml down",
     "apps:server": "pnpm -F @ba/server",
     "apps:mobile": "pnpm -F @ba/mobile",
     "apps:client": "pnpm -F @ba/client",
@@ -21,7 +24,9 @@
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@nestjs/cli": "^9.1.8",
+    "cross-env": "^7.0.3",
     "eas-cli": "^3.4.1",
+    "env-cmd": "^10.1.0",
     "husky": "^8.0.3",
     "nx": "^15.6.3"
   },
