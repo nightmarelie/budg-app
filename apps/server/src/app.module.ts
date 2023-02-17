@@ -4,9 +4,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-import { configuration, validationOptions, validationSchema } from './config';
-import { ConfigController } from './config/config.controller';
-import { UserModule } from './user/user.module';
+import {
+  configuration,
+  validationOptions,
+  validationSchema,
+  ConfigController,
+} from './config';
+import { UserModule, User } from './user';
 
 @Module({
   imports: [
@@ -27,7 +31,7 @@ import { UserModule } from './user/user.module';
           username: configService.get('database.username'),
           password: configService.get('database.password'),
           database: configService.get('database.database'),
-          entities: [],
+          entities: [User],
           synchronize: configService.get<boolean>('database.synchronize'),
         } as TypeOrmModuleOptions),
       inject: [ConfigService],
