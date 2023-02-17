@@ -30,6 +30,7 @@ import { UserModule } from './user/user.module';
           entities: [],
           synchronize: configService.get<boolean>('database.synchronize'),
         } as TypeOrmModuleOptions),
+      inject: [ConfigService],
     }),
     UserModule,
   ],
