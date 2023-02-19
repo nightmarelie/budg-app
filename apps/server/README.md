@@ -83,3 +83,9 @@ Nest is [MIT licensed](LICENSE).
 
 `npx nest --help` - for generating nest infrastructure
 `npx typeorm --help` - for generating db infrastructure
+
+## Auth strategies
+
+### Local strategy
+
+`curl -X POST http://localhost:3100/auth/login -d '{"username": "night", "password": "12345"}' -H "Content-Type: application/json"`
