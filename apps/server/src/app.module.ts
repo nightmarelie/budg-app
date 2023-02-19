@@ -11,6 +11,7 @@ import {
   ConfigController,
 } from './config';
 import { UserModule, User } from './user';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { UserModule, User } from './user';
       inject: [ConfigService],
     }),
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController, ConfigController],
   providers: [AppService],
