@@ -11,7 +11,7 @@ import {
   ConfigController,
 } from './config';
 import { UserModule, User } from './user';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './auth';
 
 @Module({
   imports: [
