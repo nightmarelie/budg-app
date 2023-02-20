@@ -62,7 +62,7 @@ $ pnpm run test:cov
 
 ```bash
 # start repl
-$ pnpm run start:repl
+$ pnpm start:repl
 ```
 
 ## Support

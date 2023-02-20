@@ -22,4 +22,8 @@ export class User {
 
   @Column({ default: true })
   isActive: boolean;
+
+  constructor(partial: Partial<User>) {
+    Object.assign(this, partial);
+  }
 }
