@@ -93,3 +93,7 @@ Nest is [MIT licensed](LICENSE).
 ### JWT strategy
 
 `curl  -X GET http://localhost:3100/api/v1/users -H "Authorization: Bearer {{TOKEN}}"`
+
+### Health check
+
+`curl  -X GET http://localhost:3100/health`

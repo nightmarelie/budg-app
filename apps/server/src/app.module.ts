@@ -12,6 +12,7 @@ import {
 } from './config';
 import { UserModule, User } from './user';
 import { AuthModule } from './auth';
+import { HealthModule } from './health';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { AuthModule } from './auth';
     }),
     UserModule,
     AuthModule, // TODO: maybe it will be better to enable it globally https://docs.nestjs.com/security/authentication#enable-authentication-globally
+    HealthModule,
   ],
   controllers: [AppController, ConfigController],
   providers: [AppService],
