@@ -20,7 +20,7 @@ export class HealthController {
   @HealthCheck()
   check() {
     return this.health.check([
-      () => this.http.pingCheck('api', 'http://localhost:3100/api/v1'),
+      () => this.http.pingCheck('api', 'http://localhost:3100/api'), // FIXME: put it to config
     ]);
   }
 }

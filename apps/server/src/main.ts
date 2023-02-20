@@ -14,7 +14,7 @@ async function bootstrap() {
   );
 
   // FIXME: put version to config
-  app.setGlobalPrefix('api/v1', {
+  app.setGlobalPrefix('v1', {
     exclude: [{ path: 'health', method: RequestMethod.GET }],
   });
 
@@ -27,9 +27,7 @@ async function bootstrap() {
     .addTag('budge')
     .build();
 
-  const document = SwaggerModule.createDocument(app, config, {
-    ignoreGlobalPrefix: true,
-  });
+  const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
   await app.listen(3100);
