@@ -27,11 +27,14 @@
     "cross-env": "^7.0.3",
     "eas-cli": "^3.4.1",
     "env-cmd": "^10.1.0",
+    "expo-modules-autolinking": ">=0.8.1",
     "husky": "^8.0.3",
-    "nx": "^15.6.3"
+    "nx": "^15.6.3",
+    "react": "^18.0.0"
   },
   "peerDependencies": {
-    "expo-modules-autolinking": "^1.0.2"
+    "expo-modules-autolinking": ">=0.8.1",
+    "react": "^18.0.0"
   },
   "engines": {
     "node": ">=18",

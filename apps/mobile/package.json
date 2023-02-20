@@ -17,10 +17,11 @@
     "react-native": "0.70.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.1.6"
   },
   "private": true,
   "peerDependencies": {
-    "@babel/preset-env": "^7.20.2"
+    "@babel/preset-env": "^7.1.6"
   }
 }

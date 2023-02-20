@@ -14,6 +14,7 @@ async function bootstrap() {
 
   // FIXME: put it to config
   const config = new DocumentBuilder()
+    .addBearerAuth()
     .setTitle('Budge API')
     .setDescription('API for budget application')
     .setVersion('1.0')
