@@ -22,12 +22,14 @@
     "clear": "pnpm rimraf -- node_modules dist"
   },
   "dependencies": {
+    "@fastify/static": "^6.9.0",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.3.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^10.0.2",
     "@nestjs/passport": "^9.0.3",
     "@nestjs/platform-fastify": "^9.2.1",
+    "@nestjs/swagger": "^6.2.1",
     "@nestjs/typeorm": "^9.0.1",
     "joi": "^17.7.1",
     "passport": "^0.6.0",
@@ -61,7 +63,8 @@
     "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "tsconfig-paths": "4.1.1",
-    "typescript": "^4.7.4"
+    "typescript": "^4.7.4",
+    "webpack": "^5.0.0"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -81,6 +84,6 @@
     "testEnvironment": "node"
   },
   "peerDependencies": {
-    "webpack": "^5.75.0"
+    "webpack": "^5.0.0"
   }
 }

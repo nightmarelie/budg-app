@@ -38,7 +38,7 @@ import { AuthModule } from './auth';
       inject: [ConfigService],
     }),
     UserModule,
-    AuthModule,
+    AuthModule, // TODO: maybe it will be better to enable it globally https://docs.nestjs.com/security/authentication#enable-authentication-globally
   ],
   controllers: [AppController, ConfigController],
   providers: [AppService],
