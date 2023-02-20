@@ -6,7 +6,7 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { UserDto } from './DTOs';
+import { User } from './user.entity';
 import { UserService } from './user.service';
 import { JwtAuthGuard } from '../auth';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
@@ -17,17 +17,17 @@ const COLLECTION_NAME = 'users';
 @ApiTags(COLLECTION_NAME)
 @ApiBearerAuth()
 @Controller(COLLECTION_NAME)
-@UseInterceptors(ClassSerializerInterceptor)
+@UseInterceptors(ClassSerializerInterceptor) // TODO: Maybe it's better to use it globally?
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  getAll(): Promise<UserDto[]> {
+  getAll(): Promise<User[]> {
     return this.userService.findAll();
   }
 
   @Get(':id')
-  getOneById(@Param('id') id: number): Promise<UserDto> {
+  getOneById(@Param('id') id: number): Promise<User> {
     return this.userService.findOne(id);
   }
 }
