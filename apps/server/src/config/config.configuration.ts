@@ -10,6 +10,9 @@ export const configuration = () => ({
     synchronize: process.env.DATABASE_SYNCHRONIZE,
     type: process.env.DATABASE_TYPE,
   },
+  jwt: {
+    secret: process.env.JWT_TOKEN_SECRET,
+  },
 });
 
 export type Configuration = ReturnType<typeof configuration>;

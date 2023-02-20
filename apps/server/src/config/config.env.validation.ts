@@ -12,6 +12,7 @@ const validationSchema = Joi.object({
   DATABASE_NAME: Joi.string().default('postgres'),
   DATABASE_SYNCHRONIZE: Joi.boolean().default(true),
   DATABASE_TYPE: Joi.string().default('postgres'),
+  JWT_TOKEN_SECRET: Joi.string().default(''),
 });
 
 const validationOptions = {
