@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import { UserModule } from 'src/user';
+import { forwardRef, Module } from '@nestjs/common';
+import { UserModule } from '../user';
 import { AuthService } from './auth.service';
 import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './local.strategy';
@@ -10,7 +10,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    UserModule,
+    forwardRef(() => UserModule),
     PassportModule,
     JwtModule.registerAsync({
       imports: [ConfigModule],

@@ -6,7 +6,7 @@ import {
 } from 'typeorm';
 import { User } from './user.entity';
 
-// TODO: For more information reffer to https://typeorm.io/listeners-and-subscribers#what-is-a-subscriber
+// TODO: For more information refer to https://typeorm.io/listeners-and-subscribers#what-is-a-subscriber
 @EventSubscriber()
 export class UserSubscriber implements EntitySubscriberInterface<User> {
   constructor(dataSource: DataSource) {

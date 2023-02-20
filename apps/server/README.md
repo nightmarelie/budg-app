@@ -89,3 +89,7 @@ Nest is [MIT licensed](LICENSE).
 ### Local strategy
 
 `curl -X POST http://localhost:3100/auth/login -d '{"username": "night", "password": "12345"}' -H "Content-Type: application/json"`
+
+### JWT strategy
+
+`curl  -X GET http://localhost:3100/users -H "Authorization: Bearer {{TOKEN}}"`
