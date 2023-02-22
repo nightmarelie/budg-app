@@ -14,6 +14,12 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
+  app.enableCors({
+    origin: '*', // TODO: put it to config
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+  });
+
   // FIXME: put version to config
   app.setGlobalPrefix('v1', {
     exclude: [{ path: 'health', method: RequestMethod.GET }],
