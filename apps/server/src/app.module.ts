@@ -26,7 +26,6 @@ import { UtilsModule } from './utils';
       validationSchema,
     }),
     TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) =>
         ({
@@ -41,7 +40,6 @@ import { UtilsModule } from './utils';
         } as TypeOrmModuleOptions),
     }),
     ThrottlerModule.forRootAsync({
-      imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => ({
         ttl: configService.get<number>('security.throttleTtl'),

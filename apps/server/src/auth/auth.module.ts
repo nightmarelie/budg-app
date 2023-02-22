@@ -5,7 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy, JwtStrategy } from './strategies';
 import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigService } from '@nestjs/config';
 import { UtilsModule } from '../utils';
 
 @Module({
@@ -13,7 +13,6 @@ import { UtilsModule } from '../utils';
     forwardRef(() => UserModule),
     PassportModule,
     JwtModule.registerAsync({
-      imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>('jwt.secret'),
         signOptions: { expiresIn: '1h' }, // TODO: Change this to env? 60s is for testing
