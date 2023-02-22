@@ -4,6 +4,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { JwtConfig } from '../config';
 import { AppModule } from '../app.module';
 import { User, UserModule } from '../user';
 import { UtilsModule } from '../utils';
@@ -21,10 +22,8 @@ describe('AuthService', () => {
         forwardRef(() => UserModule),
         PassportModule,
         JwtModule.registerAsync({
-          useFactory: async (configService: ConfigService) => ({
-            secret: configService.get<string>('jwt.secret'),
-            signOptions: { expiresIn: '30s' },
-          }),
+          useFactory: async (configService: ConfigService) =>
+            configService.get<JwtConfig>('jwt'),
           inject: [ConfigService],
         }),
         AppModule,

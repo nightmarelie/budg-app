@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "build": "pnpm rimraf -- dist && tsc",
-    "clear": "pnpm rimraf -- node_modules dist"
+    "clear": "pnpm rimraf -- dist",
+    "clear:all": "pnpm rimraf -- node_modules dist"
   },
   "keywords": [],
   "author": "",

@@ -10,7 +10,7 @@
     "apps:server": "pnpm -F @ba/server",
     "apps:mobile": "pnpm -F @ba/mobile",
     "apps:client": "pnpm -F @ba/client",
-    "clear:all": "pnpm --parallel -r clear && rimraf node_modules",
+    "clear:all": "pnpm --parallel -r clear:all && rimraf node_modules",
     "build:all": "pnpm nx run-many --target=build --projects=@ba/server,@ba/client,@ba/theme",
     "apps:dev": "pnpm nx run-many --target=start:dev --verbose --projects=@ba/server,@ba/client",
     "apps:prod": "pnpm nx run-many --target=start:prod --projects=@ba/server,@ba/client",

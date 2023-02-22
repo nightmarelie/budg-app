@@ -9,6 +9,8 @@ import {
   validationOptions,
   validationSchema,
   ConfigController,
+  DatabaseConfig,
+  ThrottleConfig,
 } from './config';
 import { UserModule, User } from './user';
 import { AuthModule } from './auth';
@@ -29,22 +31,14 @@ import { UtilsModule } from './utils';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) =>
         ({
-          type: configService.get<string>('database.type'),
-          host: configService.get<string>('database.host'),
-          port: configService.get<number>('database.port'),
-          username: configService.get<string>('database.username'),
-          password: configService.get<string>('database.password'),
-          database: configService.get<string>('database.database'),
+          ...configService.get<DatabaseConfig>('database'),
           entities: [User],
-          synchronize: configService.get<boolean>('database.synchronize'),
         } as TypeOrmModuleOptions),
     }),
     ThrottlerModule.forRootAsync({
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        ttl: configService.get<number>('security.throttleTtl'),
-        limit: configService.get<number>('security.throttleLimit'),
-      }),
+      useFactory: (configService: ConfigService) =>
+        configService.get<ThrottleConfig>('security.throttle'),
     }),
     UserModule,
     AuthModule, // TODO: maybe it will be better to enable it globally https://docs.nestjs.com/security/authentication#enable-authentication-globally

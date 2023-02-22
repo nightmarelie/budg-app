@@ -9,6 +9,7 @@ import { forwardRef } from '@nestjs/common';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
+import { JwtConfig } from '../config';
 
 describe('AuthController', () => {
   let controller: AuthController;
@@ -19,10 +20,8 @@ describe('AuthController', () => {
         forwardRef(() => UserModule),
         PassportModule,
         JwtModule.registerAsync({
-          useFactory: async (configService: ConfigService) => ({
-            secret: configService.get<string>('jwt.secret'),
-            signOptions: { expiresIn: '30s' },
-          }),
+          useFactory: async (configService: ConfigService) =>
+            configService.get<JwtConfig>('jwt'),
           inject: [ConfigService],
         }),
         AppModule,

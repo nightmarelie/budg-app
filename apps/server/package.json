@@ -19,7 +19,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "clear": "pnpm rimraf -- node_modules dist"
+    "clear": "pnpm rimraf -- dist",
+    "clear:all": "pnpm rimraf -- node_modules dist"
   },
   "dependencies": {
     "@fastify/csrf-protection": "^6.1.0",

@@ -7,16 +7,22 @@ export const configuration = () => ({
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
-    synchronize: process.env.DATABASE_SYNCHRONIZE,
+    synchronize: process.env.DATABASE_SYNCHRONIZE === 'true',
     type: process.env.DATABASE_TYPE,
   },
   jwt: {
     secret: process.env.JWT_TOKEN_SECRET,
+    signOptions: { expiresIn: process.env.JWT_TOKEN_EXPIRES_IN },
   },
   security: {
-    throttleTtl: parseInt(process.env.THROTTLE_TTL),
-    throttleLimit: parseInt(process.env.THROTTLE_LIMIT),
+    throttle: {
+      ttl: parseInt(process.env.THROTTLE_TTL),
+      limit: parseInt(process.env.THROTTLE_LIMIT),
+    },
   },
 });
 
 export type Configuration = ReturnType<typeof configuration>;
+export type DatabaseConfig = Configuration['database'];
+export type JwtConfig = Configuration['jwt'];
+export type ThrottleConfig = Configuration['security']['throttle'];

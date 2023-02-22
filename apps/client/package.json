@@ -7,7 +7,8 @@
     "start:prod": "next start",
     "build": "next build",
     "lint": "next lint",
-    "clear": "pnpm rimraf -- node_modules .next"
+    "clear": "pnpm rimraf -- .next",
+    "clear:all": "pnpm rimraf -- node_modules .next"
   },
   "dependencies": {
     "@ba/theme": "workspace:^1.0.0",

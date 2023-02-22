@@ -13,6 +13,7 @@ const validationSchema = Joi.object({
   DATABASE_SYNCHRONIZE: Joi.boolean().default(true),
   DATABASE_TYPE: Joi.string().default('postgres'),
   JWT_TOKEN_SECRET: Joi.string().default(''),
+  JWT_TOKEN_EXPIRES_IN: Joi.string().default('1s'),
   THROTTLE_TTL: Joi.number().default(60),
   THROTTLE_LIMIT: Joi.number().default(10),
 });
