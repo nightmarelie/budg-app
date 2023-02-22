@@ -98,6 +98,7 @@ importers:
 
   apps/server:
     specifiers:
+      '@fastify/helmet': ^10.1.0
       '@fastify/static': ^6.9.0
       '@nestjs/axios': ^2.0.0
       '@nestjs/cli': ^9.0.0
@@ -145,6 +146,7 @@ importers:
       typescript: ^4.7.4
       webpack: ^5.0.0
     dependencies:
+      '@fastify/helmet': 10.1.0
       '@fastify/static': 6.9.0
       '@nestjs/axios': 2.0.0_botw5lgv5w2rdowh23rtiwia6q
       '@nestjs/common': 9.2.1_welcnyot5bzd5wa2aovbkxpi4i
@@ -3412,6 +3414,13 @@ packages:
     dependencies:
       fast-querystring: 1.1.0
       fastify-plugin: 4.5.0
+    dev: false
+
+  /@fastify/helmet/10.1.0:
+    resolution: {integrity: sha512-v7QJPYf1uVcCwzyHzkDGcHTqDPscXj/61JKxOdvczyDPAKTxSeb9Sc2OBActXaj7zUELiAdgnkKkzNwmCNzBLQ==}
+    dependencies:
+      fastify-plugin: 4.5.0
+      helmet: 6.0.1
     dev: false
 
   /@fastify/middie/8.0.0:
@@ -9042,6 +9051,11 @@ packages:
     engines: {node: '>= 0.4.0'}
     dependencies:
       function-bind: 1.1.1
+
+  /helmet/6.0.1:
+    resolution: {integrity: sha512-8wo+VdQhTMVBMCITYZaGTbE4lvlthelPYSvoyNvk4RECTmrVjMerp9RfUOQXZWLvCcAn1pKj7ZRxK4lI9Alrcw==}
+    engines: {node: '>=14.0.0'}
+    dev: false
 
   /hermes-estree/0.8.0:
     resolution: {integrity: sha512-W6JDAOLZ5pMPMjEiQGLCXSSV7pIBEgRR5zGkxgmzGSXHOxqV5dC/M1Zevqpbm9TZDE5tu358qZf8Vkzmsc+u7Q==}
