@@ -1,12 +1,22 @@
+export const isTestEnv = () => process.env.NODE_ENV === 'test';
+
 export const configuration = () => ({
   port: parseInt(process.env.PORT),
   environment: process.env.NODE_ENV,
   database: {
-    host: process.env.DATABASE_HOST,
-    port: parseInt(process.env.DATABASE_PORT),
-    username: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_NAME,
+    ...(isTestEnv()
+      ? {
+          location: process.env.DATABASE_LOCATION,
+          autoSave: process.env.DATABASE_AUTO_SAVE,
+        }
+      : {
+          host: process.env.DATABASE_HOST,
+          port: parseInt(process.env.DATABASE_PORT),
+          username: process.env.DATABASE_USERNAME,
+          password: process.env.DATABASE_PASSWORD,
+          database: process.env.DATABASE_NAME,
+        }),
+
     synchronize: process.env.DATABASE_SYNCHRONIZE === 'true',
     type: process.env.DATABASE_TYPE,
   },

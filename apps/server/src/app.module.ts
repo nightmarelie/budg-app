@@ -8,6 +8,7 @@ import {
   configuration,
   validationOptions,
   validationSchema,
+  isTestEnv,
   ConfigController,
   DatabaseConfig,
   ThrottleConfig,
@@ -21,7 +22,11 @@ import { UtilsModule } from './utils';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ['.env.local', '.env.development', '.env'],
+      envFilePath: [
+        isTestEnv() ? '.env.test' : '.env.local',
+        '.env.development',
+        '.env',
+      ],
       isGlobal: true,
       load: [configuration],
       validationOptions,

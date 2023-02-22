@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-const validationSchema = Joi.object({
+export const validationSchema = Joi.object({
   PORT: Joi.number().default(3001),
   NODE_ENV: Joi.string()
     .valid('development', 'production', 'test', 'provision')
@@ -12,15 +12,15 @@ const validationSchema = Joi.object({
   DATABASE_NAME: Joi.string().default('postgres'),
   DATABASE_SYNCHRONIZE: Joi.boolean().default(true),
   DATABASE_TYPE: Joi.string().default('postgres'),
+  DATABASE_LOCATION: Joi.string().default(''),
+  DATABASE_AUTO_SAVE: Joi.boolean().default(false),
   JWT_TOKEN_SECRET: Joi.string().default(''),
   JWT_TOKEN_EXPIRES_IN: Joi.string().default('1s'),
   THROTTLE_TTL: Joi.number().default(60),
   THROTTLE_LIMIT: Joi.number().default(10),
 });
 
-const validationOptions = {
+export const validationOptions = {
   allowUnknown: true,
   abortEarly: true,
 };
-
-export { validationSchema, validationOptions };

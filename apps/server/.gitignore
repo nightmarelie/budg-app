@@ -38,6 +38,10 @@ lerna-debug.log*
 .env
 .env.*
 !.env.example
+!.env.test
+
+# local db
+database.sqlite
 
 .nestjs_repl_history
 
