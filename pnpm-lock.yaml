@@ -98,6 +98,7 @@ importers:
 
   apps/server:
     specifiers:
+      '@fastify/csrf-protection': ^6.1.0
       '@fastify/helmet': ^10.1.0
       '@fastify/static': ^6.9.0
       '@nestjs/axios': ^2.0.0
@@ -146,6 +147,7 @@ importers:
       typescript: ^4.7.4
       webpack: ^5.0.0
     dependencies:
+      '@fastify/csrf-protection': 6.1.0
       '@fastify/helmet': 10.1.0
       '@fastify/static': 6.9.0
       '@nestjs/axios': 2.0.0_botw5lgv5w2rdowh23rtiwia6q
@@ -3393,6 +3395,18 @@ packages:
     dependencies:
       fastify-plugin: 4.5.0
       mnemonist: 0.39.5
+    dev: false
+
+  /@fastify/csrf-protection/6.1.0:
+    resolution: {integrity: sha512-oKaD0wccpzieiDfK1Wr0yOWk/erbZa4gNW33iDhgrYJAKAP8V3XuL2qheEDJL2NwX5tGJ2/NFxWkWw8vOa1fdg==}
+    dependencies:
+      '@fastify/csrf': 6.1.0
+      '@fastify/error': 3.2.0
+      fastify-plugin: 4.5.0
+    dev: false
+
+  /@fastify/csrf/6.1.0:
+    resolution: {integrity: sha512-gFpoS/mdTWxdrN78MiCE/iA3Bjx6RrgWlOxlQIlixUvo1c0dFxcxiB3dnmX1mc/AyEaL9fF0KYsS+AExNYawTQ==}
     dev: false
 
   /@fastify/deepmerge/1.3.0:

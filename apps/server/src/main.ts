@@ -7,6 +7,7 @@ import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { RequestMethod } from '@nestjs/common';
 import helmet from '@fastify/helmet';
+import fastifyCsrf from '@fastify/csrf-protection';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -14,9 +15,12 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
+  await app.register(helmet);
+  await app.register(fastifyCsrf);
+
   app.enableCors({
     origin: '*', // TODO: put it to config
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'HEAD', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
@@ -36,8 +40,6 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
-
-  app.register(helmet);
 
   await app.listen(3100);
 }
