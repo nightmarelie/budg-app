@@ -3,6 +3,7 @@ import { User, UserService } from '../user';
 import { JwtService } from '@nestjs/jwt';
 import { LoginResponseDto, LoginDto } from './DTOs';
 import { UtilsService } from 'utils';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AuthService {
@@ -11,6 +12,7 @@ export class AuthService {
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
     private readonly utilsService: UtilsService,
+    private readonly configService: ConfigService,
   ) {}
 
   async validateUser(
@@ -37,6 +39,7 @@ export class AuthService {
 
     return {
       accessToken: this.jwtService.sign(payload),
+      expiresIn: this.configService.get('jwt.signOptions.expiresIn'),
     };
   }
 }

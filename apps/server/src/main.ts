@@ -8,12 +8,16 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { RequestMethod } from '@nestjs/common';
 import helmet from '@fastify/helmet';
 import fastifyCsrf from '@fastify/csrf-protection';
+import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(),
   );
+
+  const configService = app.get(ConfigService);
+  const PORT = configService.get<number>('port');
 
   await app.register(helmet);
   await app.register(fastifyCsrf);
@@ -41,6 +45,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3100);
+  await app.listen(PORT);
 }
 bootstrap();
