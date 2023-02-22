@@ -13,6 +13,7 @@ import {
 import { UserModule, User } from './user';
 import { AuthModule } from './auth';
 import { HealthModule } from './health';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { HealthModule } from './health';
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
+      inject: [ConfigService],
       useFactory: (configService: ConfigService) =>
         ({
           type: configService.get('database.type'),
@@ -36,7 +38,14 @@ import { HealthModule } from './health';
           entities: [User],
           synchronize: configService.get<boolean>('database.synchronize'),
         } as TypeOrmModuleOptions),
+    }),
+    ThrottlerModule.forRootAsync({
+      imports: [ConfigModule],
       inject: [ConfigService],
+      useFactory: (configService: ConfigService) => ({
+        ttl: configService.get<number>('security.throttleTtl'),
+        limit: configService.get<number>('security.throttleLimit'),
+      }),
     }),
     UserModule,
     AuthModule, // TODO: maybe it will be better to enable it globally https://docs.nestjs.com/security/authentication#enable-authentication-globally

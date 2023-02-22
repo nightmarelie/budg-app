@@ -1,7 +1,7 @@
 import * as Joi from 'joi';
 
 const validationSchema = Joi.object({
-  PORT: Joi.number().default(3000),
+  PORT: Joi.number().default(3001),
   NODE_ENV: Joi.string()
     .valid('development', 'production', 'test', 'provision')
     .default('development'),
@@ -13,6 +13,8 @@ const validationSchema = Joi.object({
   DATABASE_SYNCHRONIZE: Joi.boolean().default(true),
   DATABASE_TYPE: Joi.string().default('postgres'),
   JWT_TOKEN_SECRET: Joi.string().default(''),
+  THROTTLE_TTL: Joi.number().default(60),
+  THROTTLE_LIMIT: Joi.number().default(10),
 });
 
 const validationOptions = {
