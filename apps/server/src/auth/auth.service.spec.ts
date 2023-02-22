@@ -8,6 +8,7 @@ import { AppModule } from '../app.module';
 import { User, UserModule } from '../user';
 import { UtilsModule } from '../utils';
 import { AuthService } from './auth.service';
+import { JwtStrategy, LocalStrategy } from './strategies';
 
 // TODO: add more tests based on https://github.com/nestjs/nest/blob/master/sample/19-auth-jwt/src/auth/auth.service.spec.ts
 // TODO: I need mock db for this
@@ -31,6 +32,8 @@ describe('AuthService', () => {
         UtilsModule,
       ],
       providers: [
+        LocalStrategy,
+        JwtStrategy,
         AuthService,
         {
           provide: getRepositoryToken(User),
