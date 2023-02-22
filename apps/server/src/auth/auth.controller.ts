@@ -9,7 +9,7 @@ const COLLECTION_NAME = 'auth';
 @ApiTags(COLLECTION_NAME)
 @Controller(COLLECTION_NAME)
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(private readonly authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard)
   @Post('login')

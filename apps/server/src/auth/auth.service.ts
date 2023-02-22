@@ -2,6 +2,7 @@ import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { User, UserService } from '../user';
 import { JwtService } from '@nestjs/jwt';
 import { LoginResponseDto, LoginDto } from './DTOs';
+import { UtilsService } from 'utils';
 
 @Injectable()
 export class AuthService {
@@ -9,6 +10,7 @@ export class AuthService {
     @Inject(forwardRef(() => UserService))
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
+    private readonly utilsService: UtilsService,
   ) {}
 
   async validateUser(
@@ -16,9 +18,12 @@ export class AuthService {
     password: LoginDto['password'],
   ): Promise<Partial<User> | null> {
     const user = await this.userService.findOneByUsername(username);
+    const isPasswordValid = await this.utilsService.comparePassword(
+      password,
+      user.password,
+    );
 
-    // TODO: Hash password by bcrypt
-    if (user && user.password === password) {
+    if (user && isPasswordValid) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password: _, ...result } = user;
       return result;

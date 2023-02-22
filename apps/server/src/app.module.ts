@@ -14,6 +14,7 @@ import { UserModule, User } from './user';
 import { AuthModule } from './auth';
 import { HealthModule } from './health';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { UtilsModule } from './utils';
 
 @Module({
   imports: [
@@ -29,12 +30,12 @@ import { ThrottlerModule } from '@nestjs/throttler';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) =>
         ({
-          type: configService.get('database.type'),
-          host: configService.get('database.host'),
-          port: configService.get('database.port'),
-          username: configService.get('database.username'),
-          password: configService.get('database.password'),
-          database: configService.get('database.database'),
+          type: configService.get<string>('database.type'),
+          host: configService.get<string>('database.host'),
+          port: configService.get<number>('database.port'),
+          username: configService.get<string>('database.username'),
+          password: configService.get<string>('database.password'),
+          database: configService.get<string>('database.database'),
           entities: [User],
           synchronize: configService.get<boolean>('database.synchronize'),
         } as TypeOrmModuleOptions),
@@ -50,6 +51,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
     UserModule,
     AuthModule, // TODO: maybe it will be better to enable it globally https://docs.nestjs.com/security/authentication#enable-authentication-globally
     HealthModule,
+    UtilsModule,
   ],
   controllers: [AppController, ConfigController],
   providers: [AppService],
