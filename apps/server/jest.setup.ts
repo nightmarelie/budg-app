@@ -1,20 +1,25 @@
 import 'reflect-metadata';
 import { Connection } from 'typeorm';
 import {
-  runSeeder,
   tearDownDatabase,
   useRefreshDatabase,
   useSeeding,
 } from 'typeorm-seeding';
-import CreateUsersSeed from './src/user/user.seed';
 
 let connection: Connection;
 
 beforeAll(async () => {
   connection = await useRefreshDatabase();
   await useSeeding();
+});
 
-  await runSeeder(CreateUsersSeed);
+afterEach(async () => {
+  const entities = connection.entityMetadatas;
+
+  for (const entity of entities) {
+    const repository = connection.getRepository(entity.name); // Get repository
+    await repository.clear(); // Clear each entity table's content
+  }
 });
 
 afterAll(async () => {
