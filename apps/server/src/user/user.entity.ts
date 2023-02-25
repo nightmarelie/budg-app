@@ -1,11 +1,12 @@
 import { ApiHideProperty, ApiProperty } from '@nestjs/swagger';
 import { Exclude, Expose } from 'class-transformer';
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert } from 'typeorm';
+import { UtilsService } from '../utils';
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('uuid')
+  uuid: string;
 
   @Column()
   email: string;
@@ -35,5 +36,10 @@ export class User {
 
   constructor(partial: Partial<User>) {
     Object.assign(this, partial);
+  }
+
+  @BeforeInsert()
+  async setPassword(password: string) {
+    this.password = await UtilsService.hashPassword(password || this.password);
   }
 }

@@ -37,7 +37,6 @@ import { UtilsModule } from './utils';
       useFactory: (configService: ConfigService) =>
         ({
           ...configService.get<DatabaseConfig>('database'),
-          entities: [User],
         } as TypeOrmModuleOptions),
     }),
     ThrottlerModule.forRootAsync({

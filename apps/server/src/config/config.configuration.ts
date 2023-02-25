@@ -1,17 +1,17 @@
 export const isTestEnv = () => process.env.NODE_ENV === 'test';
 
 export const configuration = () => ({
-  port: parseInt(process.env.PORT),
+  port: parseInt(process.env.PORT as string),
   environment: process.env.NODE_ENV,
   database: {
     ...(isTestEnv()
       ? {
           location: process.env.DATABASE_LOCATION,
-          autoSave: process.env.DATABASE_AUTO_SAVE,
+          autoSave: process.env.DATABASE_AUTO_SAVE === 'true',
         }
       : {
           host: process.env.DATABASE_HOST,
-          port: parseInt(process.env.DATABASE_PORT),
+          port: parseInt(process.env.DATABASE_PORT as string),
           username: process.env.DATABASE_USERNAME,
           password: process.env.DATABASE_PASSWORD,
           database: process.env.DATABASE_NAME,
@@ -19,6 +19,10 @@ export const configuration = () => ({
 
     synchronize: process.env.DATABASE_SYNCHRONIZE === 'true',
     type: process.env.DATABASE_TYPE,
+    seeds: ['src/**/*.seed{.ts,.js}'],
+    factories: ['src/**/*.factory{.ts,.js}'],
+    migrations: ['src/**/*.migration{.ts,.js}'],
+    entities: ['src/**/*.entity{.ts,.js}'],
   },
   jwt: {
     secret: process.env.JWT_TOKEN_SECRET,
@@ -26,8 +30,8 @@ export const configuration = () => ({
   },
   security: {
     throttle: {
-      ttl: parseInt(process.env.THROTTLE_TTL),
-      limit: parseInt(process.env.THROTTLE_LIMIT),
+      ttl: parseInt(process.env.THROTTLE_TTL as string),
+      limit: parseInt(process.env.THROTTLE_LIMIT as string),
     },
   },
 });
