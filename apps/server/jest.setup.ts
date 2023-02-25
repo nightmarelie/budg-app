@@ -13,16 +13,13 @@ beforeAll(async () => {
   await useSeeding();
 });
 
-afterEach(async () => {
+afterAll(async () => {
   const entities = connection.entityMetadatas;
 
   for (const entity of entities) {
     const repository = connection.getRepository(entity.name); // Get repository
     await repository.clear(); // Clear each entity table's content
   }
-});
 
-afterAll(async () => {
-  await connection.dropDatabase();
   await tearDownDatabase();
 });

@@ -19,7 +19,7 @@ describe('UserService', () => {
     isActive: true,
   };
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     await runSeeder(CreateUsersSeed);
   });
 
@@ -72,6 +72,9 @@ describe('UserService', () => {
     expect(user.username).toEqual(testUser.username);
     expect(user.email).toEqual(testUser.email);
     expect(user.isActive).toEqual(testUser.isActive);
+
+    // Clean up
+    await service.remove(user.uuid);
   });
 
   it('should remove a user', async () => {

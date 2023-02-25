@@ -20,12 +20,17 @@ export class AuthService {
     password: LoginDto['password'],
   ): Promise<Partial<User> | null> {
     const user = await this.userService.findOneByUsername(username);
+
+    if (!user) {
+      return null;
+    }
+
     const isPasswordValid = await this.utilsService.comparePassword(
       password,
       user.password,
     );
 
-    if (user && isPasswordValid) {
+    if (isPasswordValid) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { password: _, ...result } = user;
       return result;
