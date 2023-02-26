@@ -15,7 +15,7 @@
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "env:test": "pnpm cross-env NODE_ENV=test",
-    "test": "pnpm env:test jest",
+    "test": "pnpm env:test jest --runInBand",
     "test:watch": "pnpm env:test jest --watch",
     "test:cov": "pnpm env:test jest --coverage",
     "test:debug": "pnpm env:test node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",

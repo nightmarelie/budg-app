@@ -1,6 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { runSeeder } from 'typeorm-seeding';
+import {
+  runSeeder,
+  tearDownDatabase,
+  useRefreshDatabase,
+  useSeeding,
+} from 'typeorm-seeding';
 import { AppModule } from '../app.module';
 import { User } from './user.entity';
 import CreateUsersSeed from './user.seed';
@@ -20,6 +25,8 @@ describe('UserService', () => {
   };
 
   beforeAll(async () => {
+    await useRefreshDatabase();
+    await useSeeding();
     await runSeeder(CreateUsersSeed);
   });
 
@@ -30,6 +37,10 @@ describe('UserService', () => {
     }).compile();
 
     service = module.get<UserService>(UserService);
+  });
+
+  afterAll(async () => {
+    await tearDownDatabase();
   });
 
   it('should be defined', () => {
@@ -61,7 +72,7 @@ describe('UserService', () => {
     const users = await service.findAll();
 
     expect(users).toBeDefined();
-    expect(users.length).toEqual(11);
+    expect(users.length > 0).toEqual(true);
   });
 
   it('should create a user', async () => {

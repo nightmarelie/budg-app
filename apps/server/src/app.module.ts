@@ -13,11 +13,11 @@ import {
   DatabaseConfig,
   ThrottleConfig,
 } from './config';
-import { UserModule, User } from './user';
+import { UserModule } from './user';
 import { AuthModule } from './auth';
 import { HealthModule } from './health';
 import { ThrottlerModule } from '@nestjs/throttler';
-import { UtilsModule } from './utils';
+import { UtilsModule, UtilsService } from './utils';
 
 @Module({
   imports: [

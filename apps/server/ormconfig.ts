@@ -1,7 +1,9 @@
 import * as dotenv from 'dotenv';
 import * as fs from 'fs';
+import { UtilsService } from 'utils';
 
 const isTestEnv = () => process.env.NODE_ENV === 'test';
+const isLoggingEnabled = () => process.env.DATABASE_LOGGING === 'true';
 
 const envFiles = ['.env', isTestEnv() ? '.env.test' : null].filter(Boolean);
 
@@ -19,5 +21,9 @@ envFiles.forEach((path) => {
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const config = require('config').configuration();
+
+if (isLoggingEnabled()) {
+  console.table(UtilsService.flattenObject(config));
+}
 
 module.exports = config.database;

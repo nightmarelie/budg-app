@@ -9,13 +9,20 @@ import { User, UserModule } from '../user';
 import { UtilsModule } from '../utils';
 import { AuthService } from './auth.service';
 import { JwtStrategy, LocalStrategy } from './strategies';
-import { runSeeder } from 'typeorm-seeding';
+import {
+  runSeeder,
+  tearDownDatabase,
+  useRefreshDatabase,
+  useSeeding,
+} from 'typeorm-seeding';
 import CreateAuthSeed from './auth.seed';
 
 describe('AuthService', () => {
   let service: AuthService;
 
   beforeAll(async () => {
+    await useRefreshDatabase();
+    await useSeeding();
     await runSeeder(CreateAuthSeed);
   });
 
@@ -36,6 +43,10 @@ describe('AuthService', () => {
     }).compile();
 
     service = module.get<AuthService>(AuthService);
+  });
+
+  afterAll(async () => {
+    await tearDownDatabase();
   });
 
   it('should be defined', () => {
