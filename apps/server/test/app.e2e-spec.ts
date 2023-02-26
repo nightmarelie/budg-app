@@ -32,4 +32,11 @@ describe('AppController (e2e)', () => {
       }),
     );
   });
+
+  it('/ (GET)', async () => {
+    const res = await app.inject().get('/').end();
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toBe('Hello World!');
+  });
 });
