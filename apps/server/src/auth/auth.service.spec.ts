@@ -56,8 +56,6 @@ describe('AuthService', () => {
   it('should return a user object when credentials are valid', async () => {
     const result = await service.validateUser('admin', 'password');
 
-    console.log(result);
-
     expect(result.uuid).toEqual('00000000-0000-0000-0000-000000000000');
     expect(result.username).toEqual('admin');
     expect(result.email).toEqual('admin@test.com');

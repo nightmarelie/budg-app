@@ -16,6 +16,7 @@ export const validationSchema = Joi.object({
   DATABASE_AUTO_SAVE: Joi.boolean().default(false),
   DATABASE_DROP_SCHEMA: Joi.boolean().default(false),
   DATABASE_LOGGING: Joi.boolean().default(false),
+  DATABASE_CONNECTION_NAME: Joi.string().default('default'),
   JWT_TOKEN_SECRET: Joi.string().default(''),
   JWT_TOKEN_EXPIRES_IN: Joi.string().default('1s'),
   THROTTLE_TTL: Joi.number().default(60),

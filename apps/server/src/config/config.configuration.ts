@@ -19,7 +19,7 @@ export const configuration = () => ({
           password: process.env.DATABASE_PASSWORD,
           database: process.env.DATABASE_NAME,
         }),
-
+    name: process.env.DATABASE_CONNECTION_NAME,
     logging: process.env.DATABASE_LOGGING === 'true',
     dropSchema: process.env.DATABASE_DROP_SCHEMA === 'true',
     synchronize: process.env.DATABASE_SYNCHRONIZE === 'true',

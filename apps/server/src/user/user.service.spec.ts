@@ -72,7 +72,7 @@ describe('UserService', () => {
     const users = await service.findAll();
 
     expect(users).toBeDefined();
-    expect(users.length > 0).toEqual(true);
+    expect(users.length).toEqual(11);
   });
 
   it('should create a user', async () => {
