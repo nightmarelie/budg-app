@@ -9,8 +9,7 @@ export const configuration = () => ({
   database: {
     ...(isTestEnv()
       ? {
-          location: process.env.DATABASE_LOCATION,
-          autoSave: process.env.DATABASE_AUTO_SAVE === 'true',
+          database: process.env.DATABASE_NAME,
         }
       : {
           host: process.env.DATABASE_HOST,

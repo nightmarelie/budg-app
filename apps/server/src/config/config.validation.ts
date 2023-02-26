@@ -13,7 +13,6 @@ export const validationSchema = Joi.object({
   DATABASE_SYNCHRONIZE: Joi.boolean().default(true),
   DATABASE_TYPE: Joi.string().default('postgres'),
   DATABASE_LOCATION: Joi.string(),
-  DATABASE_AUTO_SAVE: Joi.boolean().default(false),
   DATABASE_DROP_SCHEMA: Joi.boolean().default(false),
   DATABASE_LOGGING: Joi.boolean().default(false),
   DATABASE_CONNECTION_NAME: Joi.string().default('default'),

@@ -17,7 +17,7 @@ import { UserModule } from './user';
 import { AuthModule } from './auth';
 import { HealthModule } from './health';
 import { ThrottlerModule } from '@nestjs/throttler';
-import { UtilsModule, UtilsService } from './utils';
+import { UtilsModule } from './utils';
 
 @Module({
   imports: [
