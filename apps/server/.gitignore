@@ -42,6 +42,8 @@ lerna-debug.log*
 
 # local db
 database.sqlite
+database.sqlite-shm
+database.sqlite-wal
 
 .nestjs_repl_history
 

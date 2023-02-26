@@ -45,10 +45,6 @@ describe('AuthService', () => {
     service = module.get<AuthService>(AuthService);
   });
 
-  afterAll(async () => {
-    await tearDownDatabase();
-  });
-
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
@@ -78,5 +74,9 @@ describe('AuthService', () => {
 
     expect(result.accessToken).toBeDefined();
     expect(result.expiresIn).toBeDefined();
+  });
+
+  afterAll(async () => {
+    await tearDownDatabase();
   });
 });

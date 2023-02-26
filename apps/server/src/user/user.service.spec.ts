@@ -39,10 +39,6 @@ describe('UserService', () => {
     service = module.get<UserService>(UserService);
   });
 
-  afterAll(async () => {
-    await tearDownDatabase();
-  });
-
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
@@ -94,5 +90,9 @@ describe('UserService', () => {
 
     expect(result).toBeDefined();
     expect(result.affected).toEqual(1);
+  });
+
+  afterAll(async () => {
+    await tearDownDatabase();
   });
 });

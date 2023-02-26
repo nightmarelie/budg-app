@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 export const isTestEnv = () => process.env.NODE_ENV === 'test';
-const distDir = isTestEnv() ? 'src' : __dirname;
+const distDir = isTestEnv() ? ['src'] : [__dirname, '..'];
 
 export const configuration = () => ({
   port: parseInt(process.env.PORT as string),
@@ -23,10 +23,10 @@ export const configuration = () => ({
     dropSchema: process.env.DATABASE_DROP_SCHEMA === 'true',
     synchronize: process.env.DATABASE_SYNCHRONIZE === 'true',
     type: process.env.DATABASE_TYPE,
-    seeds: [join(distDir, '**', '*.seed.{ts,js}')],
-    factories: [join(distDir, '**', '*.factory.{ts,js}')],
-    migrations: [join(distDir, '**', '*.migration.{ts,js}')],
-    entities: [join(distDir, '**', '*.entity.{ts,js}')],
+    seeds: [join(...distDir, '**', '*.seed.{ts,js}')],
+    factories: [join(...distDir, '**', '*.factory.{ts,js}')],
+    migrations: [join(...distDir, '**', '*.migration.{ts,js}')],
+    entities: [join(...distDir, '**', '*.entity.{ts,js}')],
   },
   jwt: {
     secret: process.env.JWT_TOKEN_SECRET,
