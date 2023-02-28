@@ -14,6 +14,9 @@ async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(),
+    {
+      logger: ['log', 'error', 'warn', 'debug', 'verbose'],
+    },
   );
 
   const configService = app.get(ConfigService);
