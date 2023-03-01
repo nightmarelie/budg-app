@@ -9,13 +9,14 @@ import { RequestMethod } from '@nestjs/common';
 import helmet from '@fastify/helmet';
 import fastifyCsrf from '@fastify/csrf-protection';
 import { ConfigService } from '@nestjs/config';
+import { LoggerService } from './logger';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
     new FastifyAdapter(),
     {
-      logger: ['log', 'error', 'warn', 'debug', 'verbose'],
+      logger: new LoggerService(),
     },
   );
 

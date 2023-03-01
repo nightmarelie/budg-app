@@ -18,6 +18,7 @@ import { AuthModule } from './auth';
 import { HealthModule } from './health';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { UtilsModule } from './utils';
+import { LoggerModule } from './logger';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { UtilsModule } from './utils';
     AuthModule, // TODO: maybe it will be better to enable it globally https://docs.nestjs.com/security/authentication#enable-authentication-globally
     HealthModule,
     UtilsModule,
+    LoggerModule,
   ],
   controllers: [AppController, ConfigController],
   providers: [AppService],
