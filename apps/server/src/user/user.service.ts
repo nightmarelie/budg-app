@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, DeleteResult, Repository } from 'typeorm';
 import { User } from './user.entity';
+import { LoggerService } from '../logger';
 
 @Injectable()
 export class UserService {
@@ -9,7 +10,11 @@ export class UserService {
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
     private readonly dataSource: DataSource,
-  ) {}
+    private readonly logger: LoggerService,
+  ) {
+    this.logger.setContext(UserService.name);
+    this.logger.verbose('Constructor initialization');
+  }
 
   findAll(): Promise<User[]> {
     return this.usersRepository.find();
