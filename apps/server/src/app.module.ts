@@ -19,6 +19,7 @@ import { HealthModule } from './health';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { UtilsModule } from './utils';
 import { LoggerModule } from './logger';
+import { PlaygroundModule } from './playground/playground.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { LoggerModule } from './logger';
     HealthModule,
     UtilsModule,
     LoggerModule,
+    PlaygroundModule,
   ],
   controllers: [AppController, ConfigController],
   providers: [AppService],
