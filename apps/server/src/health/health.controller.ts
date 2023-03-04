@@ -5,6 +5,7 @@ import {
   HttpHealthIndicator,
   HealthCheck,
   TypeOrmHealthIndicator,
+  DiskHealthIndicator,
 } from '@nestjs/terminus';
 
 const COLLECTION_NAME = 'health';
@@ -16,6 +17,7 @@ export class HealthController {
     private readonly health: HealthCheckService,
     private readonly http: HttpHealthIndicator,
     private readonly db: TypeOrmHealthIndicator,
+    private readonly disk: DiskHealthIndicator,
   ) {}
 
   @Get()
@@ -24,6 +26,8 @@ export class HealthController {
     return this.health.check([
       () => this.http.pingCheck('api', 'http://localhost:3100/api'), // FIXME: put it to config
       () => this.db.pingCheck('database'), // FIXME: put it to config
+      () =>
+        this.disk.checkStorage('storage', { path: '/', thresholdPercent: 0.9 }),
     ]);
   }
 }
