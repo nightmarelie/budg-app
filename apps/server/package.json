@@ -24,7 +24,8 @@
     "clear:all": "pnpm rimraf -- node_modules dist database.sqlite",
     "typeorm": "typeorm-ts-node-esm",
     "seed:config": "ts-node --transpile-only --project tsconfig.json -r tsconfig-paths/register ../../node_modules/typeorm-seeding/dist/cli.js config",
-    "seed:run": "ts-node --transpile-only --project tsconfig.json -r tsconfig-paths/register ../../node_modules/typeorm-seeding/dist/cli.js seed"
+    "seed:run": "ts-node --transpile-only --project tsconfig.json -r tsconfig-paths/register ../../node_modules/typeorm-seeding/dist/cli.js seed",
+    "doc:gen": "npx @compodoc/compodoc -p tsconfig.json -s"
   },
   "dependencies": {
     "@fastify/csrf-protection": "^6.1.0",
@@ -55,6 +56,7 @@
     "typeorm": "^0.3.11"
   },
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.19",
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
