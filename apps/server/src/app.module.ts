@@ -24,7 +24,15 @@ import { PlaygroundModule } from './playground/playground.module';
 
 @Module({
   imports: [
-    EventEmitterModule.forRoot(),
+    EventEmitterModule.forRoot({
+      wildcard: false,
+      delimiter: '.',
+      newListener: false,
+      removeListener: false,
+      maxListeners: 20,
+      verboseMemoryLeak: true,
+      ignoreErrors: false,
+    }),
     ConfigModule.forRoot({
       envFilePath: [
         isTestEnv() ? '.env.test' : '.env.local',
