@@ -10,6 +10,7 @@ import helmet from '@fastify/helmet';
 import fastifyCsrf from '@fastify/csrf-protection';
 import { ConfigService } from '@nestjs/config';
 import { LoggerService } from './logger';
+import compression from '@fastify/compress';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
@@ -47,6 +48,8 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+
+  await app.register(compression, { encodings: ['gzip', 'deflate'] });
 
   await app.listen(PORT);
 }
