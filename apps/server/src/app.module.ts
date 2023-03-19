@@ -21,6 +21,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { UtilsModule } from './utils';
 import { LoggerModule } from './logger';
 import { PlaygroundModule } from './playground';
+import { RoleModule } from './role/role.module';
 
 @Module({
   imports: [
@@ -62,6 +63,7 @@ import { PlaygroundModule } from './playground';
     UtilsModule,
     LoggerModule,
     PlaygroundModule,
+    RoleModule,
   ],
   controllers: [AppController, ConfigController],
   providers: [AppService],
