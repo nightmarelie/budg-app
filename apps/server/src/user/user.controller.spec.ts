@@ -6,13 +6,14 @@ import { UserController } from './user.controller';
 import { User } from './user.entity';
 import { UserService } from './user.service';
 import { AppModule } from '../app.module';
+import { LoggerModule } from '../logger';
 
 describe('UserController', () => {
   let controller: UserController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [forwardRef(() => AuthModule), AppModule],
+      imports: [forwardRef(() => AuthModule), AppModule, LoggerModule],
       controllers: [UserController],
       providers: [
         UserService,

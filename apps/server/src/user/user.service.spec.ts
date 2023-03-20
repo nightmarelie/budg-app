@@ -10,6 +10,7 @@ import { AppModule } from '../app.module';
 import { User } from './user.entity';
 import CreateUsersSeed from './user.seed';
 import { UserService } from './user.service';
+import { LoggerModule } from '../logger';
 
 describe('UserService', () => {
   let service: UserService;
@@ -32,7 +33,7 @@ describe('UserService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [AppModule, TypeOrmModule.forFeature([User])],
+      imports: [AppModule, TypeOrmModule.forFeature([User]), LoggerModule],
       providers: [UserService],
     }).compile();
 
