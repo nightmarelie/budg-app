@@ -21,7 +21,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
 import { UtilsModule } from './utils';
 import { LoggerModule } from './logger';
 import { PlaygroundModule } from './playground';
-import { RoleModule } from './role/role.module';
+import { RoleModule } from './role';
 
 @Module({
   imports: [
