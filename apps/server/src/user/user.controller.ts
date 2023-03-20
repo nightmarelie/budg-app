@@ -10,9 +10,11 @@ import { User } from './user.entity';
 import { UserService } from './user.service';
 import { JwtAuthGuard } from '../auth';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Role, Roles } from 'role';
 
 const COLLECTION_NAME = 'users';
 
+@Roles(Role.Admin)
 @UseGuards(JwtAuthGuard)
 @ApiTags(COLLECTION_NAME)
 @ApiBearerAuth()
