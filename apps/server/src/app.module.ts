@@ -1,7 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 
@@ -65,7 +63,7 @@ import { RoleModule } from './role';
     PlaygroundModule,
     RoleModule,
   ],
-  controllers: [AppController, ConfigController],
-  providers: [AppService],
+  controllers: [ConfigController],
+  providers: [],
 })
 export class AppModule {}
