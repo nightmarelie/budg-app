@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, CacheModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
@@ -23,6 +23,7 @@ import { RoleModule } from './role';
 
 @Module({
   imports: [
+    CacheModule.register(),
     EventEmitterModule.forRoot({
       wildcard: false,
       delimiter: '.',
