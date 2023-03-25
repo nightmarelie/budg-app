@@ -5,11 +5,19 @@ import { Cache } from 'cache-manager';
 export class PlaygroundService {
   constructor(@Inject(CACHE_MANAGER) private cacheManager: Cache) {}
 
-  async getCachedValue(key: string): Promise<string> {
+  async getValue(key: string): Promise<string> {
     return this.cacheManager.get(key);
   }
 
-  async setCachedValue(key: string, value: string): Promise<void> {
+  async setValue(key: string, value: string): Promise<void> {
     await this.cacheManager.set(key, value);
+  }
+
+  async deleteValue(key: string): Promise<void> {
+    await this.cacheManager.del(key);
+  }
+
+  async clearCache(): Promise<void> {
+    await this.cacheManager.reset();
   }
 }
