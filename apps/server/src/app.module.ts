@@ -24,7 +24,11 @@ import { RoleModule } from './role';
 
 @Module({
   imports: [
-    CacheModule.register(),
+    CacheModule.register({
+      ttl: 5, // seconds
+      max: 10, // maximum number of items in cache
+      isGlobal: true,
+    }),
     EventEmitterModule.forRoot({
       wildcard: false,
       delimiter: '.',
