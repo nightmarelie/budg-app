@@ -3,10 +3,25 @@ import { join } from 'path';
 export const isTestEnv = () => process.env.NODE_ENV === 'test';
 const distDir = isTestEnv() ? ['src'] : [__dirname, '..'];
 
+export enum EnvFile {
+  LOCAL = '.env.local',
+  DEVELOPMENT = '.env.development',
+  TEST = '.env.test',
+  PRODUCTION = '.env',
+}
+
+export enum ConfigRoot {
+  DATABASE = 'database',
+  CACHE = 'cache',
+  PORT = 'port',
+  SECURITY_THROTTLE = 'security.throttle',
+  JWT = 'jwt',
+}
+
 export const configuration = () => ({
   port: parseInt(process.env.PORT as string),
   environment: process.env.NODE_ENV,
-  database: {
+  [ConfigRoot.DATABASE]: {
     ...(isTestEnv()
       ? {
           database: process.env.DATABASE_NAME,
@@ -38,14 +53,14 @@ export const configuration = () => ({
       limit: parseInt(process.env.THROTTLE_LIMIT as string),
     },
   },
-  cache: {
+  [ConfigRoot.CACHE]: {
     ttl: parseInt(process.env.CACHE_TTL as string),
     max: parseInt(process.env.CACHE_MAX as string),
   },
 });
 
 export type Configuration = ReturnType<typeof configuration>;
-export type DatabaseConfig = Configuration['database'];
+export type DatabaseConfig = Configuration[ConfigRoot.DATABASE];
 export type JwtConfig = Configuration['jwt'];
 export type ThrottleConfig = Configuration['security']['throttle'];
-export type CacheConfig = Configuration['cache'];
+export type CacheConfig = Configuration[ConfigRoot.CACHE];

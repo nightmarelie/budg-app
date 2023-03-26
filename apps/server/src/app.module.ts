@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { APP_INTERCEPTOR } from '@nestjs/core';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 import {
   configuration,
@@ -13,11 +14,12 @@ import {
   DatabaseConfig,
   ThrottleConfig,
   CacheConfig,
+  EnvFile,
+  ConfigRoot,
 } from './config';
 import { UserModule } from './user';
 import { AuthModule } from './auth';
 import { HealthModule } from './health';
-import { ThrottlerModule } from '@nestjs/throttler';
 import { UtilsModule } from './utils';
 import { LoggerModule } from './logger';
 import { PlaygroundModule } from './playground';
@@ -29,7 +31,7 @@ import { RoleModule } from './role';
       inject: [ConfigService],
       isGlobal: true,
       useFactory: (configService: ConfigService) =>
-        configService.get<CacheConfig>('cache'),
+        configService.get<CacheConfig>(ConfigRoot.CACHE),
     }),
     EventEmitterModule.forRoot({
       wildcard: false,
@@ -42,9 +44,9 @@ import { RoleModule } from './role';
     }),
     ConfigModule.forRoot({
       envFilePath: [
-        isTestEnv() ? '.env.test' : '.env.local',
-        '.env.development',
-        '.env',
+        isTestEnv() ? EnvFile.TEST : EnvFile.LOCAL,
+        EnvFile.DEVELOPMENT,
+        EnvFile.PRODUCTION,
       ],
       isGlobal: true,
       load: [configuration],
@@ -54,12 +56,14 @@ import { RoleModule } from './role';
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) =>
-        configService.get<DatabaseConfig>('database') as TypeOrmModuleOptions,
+        configService.get<DatabaseConfig>(
+          ConfigRoot.DATABASE,
+        ) as TypeOrmModuleOptions,
     }),
     ThrottlerModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) =>
-        configService.get<ThrottleConfig>('security.throttle'),
+        configService.get<ThrottleConfig>(ConfigRoot.SECURITY_THROTTLE),
     }),
     UserModule,
     AuthModule, // TODO: maybe it will be better to enable it globally https://docs.nestjs.com/security/authentication#enable-authentication-globally
