@@ -38,9 +38,14 @@ export const configuration = () => ({
       limit: parseInt(process.env.THROTTLE_LIMIT as string),
     },
   },
+  cache: {
+    ttl: parseInt(process.env.CACHE_TTL as string),
+    max: parseInt(process.env.CACHE_MAX as string),
+  },
 });
 
 export type Configuration = ReturnType<typeof configuration>;
 export type DatabaseConfig = Configuration['database'];
 export type JwtConfig = Configuration['jwt'];
 export type ThrottleConfig = Configuration['security']['throttle'];
+export type CacheConfig = Configuration['cache'];

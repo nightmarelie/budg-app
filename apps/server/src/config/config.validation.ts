@@ -20,6 +20,8 @@ export const validationSchema = Joi.object({
   JWT_TOKEN_EXPIRES_IN: Joi.string().default('1s'),
   THROTTLE_TTL: Joi.number().default(60),
   THROTTLE_LIMIT: Joi.number().default(10),
+  CACHE_TTL: Joi.number().default(5),
+  CACHE_MAX: Joi.number().default(10),
 });
 
 export const validationOptions = {

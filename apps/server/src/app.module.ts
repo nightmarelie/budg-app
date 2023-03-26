@@ -12,6 +12,7 @@ import {
   ConfigController,
   DatabaseConfig,
   ThrottleConfig,
+  CacheConfig,
 } from './config';
 import { UserModule } from './user';
 import { AuthModule } from './auth';
@@ -24,10 +25,11 @@ import { RoleModule } from './role';
 
 @Module({
   imports: [
-    CacheModule.register({
-      ttl: 5, // seconds
-      max: 10, // maximum number of items in cache
+    CacheModule.registerAsync({
+      inject: [ConfigService],
       isGlobal: true,
+      useFactory: (configService: ConfigService) =>
+        configService.get<CacheConfig>('cache'),
     }),
     EventEmitterModule.forRoot({
       wildcard: false,
@@ -52,9 +54,7 @@ import { RoleModule } from './role';
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (configService: ConfigService) =>
-        ({
-          ...configService.get<DatabaseConfig>('database'),
-        } as TypeOrmModuleOptions),
+        configService.get<DatabaseConfig>('database') as TypeOrmModuleOptions,
     }),
     ThrottlerModule.forRootAsync({
       inject: [ConfigService],
