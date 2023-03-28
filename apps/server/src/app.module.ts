@@ -16,6 +16,7 @@ import {
   CacheConfig,
   EnvFile,
   ConfigRoot,
+  QueueConfig,
 } from './config';
 import { UserModule } from './user';
 import { AuthModule } from './auth';
@@ -24,6 +25,7 @@ import { UtilsModule } from './utils';
 import { LoggerModule } from './logger';
 import { PlaygroundModule } from './playground';
 import { RoleModule } from './role';
+import { BullModule } from '@nestjs/bull';
 
 @Module({
   imports: [
@@ -64,6 +66,11 @@ import { RoleModule } from './role';
       inject: [ConfigService],
       useFactory: (configService: ConfigService) =>
         configService.get<ThrottleConfig>(ConfigRoot.SECURITY_THROTTLE),
+    }),
+    BullModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) =>
+        configService.get<QueueConfig>(ConfigRoot.QUEUE),
     }),
     UserModule,
     AuthModule, // TODO: maybe it will be better to enable it globally https://docs.nestjs.com/security/authentication#enable-authentication-globally
