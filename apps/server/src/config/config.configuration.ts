@@ -16,6 +16,7 @@ export enum ConfigRoot {
   PORT = 'port',
   SECURITY_THROTTLE = 'security.throttle',
   JWT = 'jwt',
+  QUEUE = 'queue',
 }
 
 export const configuration = () => ({
@@ -57,6 +58,12 @@ export const configuration = () => ({
     ttl: parseInt(process.env.CACHE_TTL as string),
     max: parseInt(process.env.CACHE_MAX as string),
   },
+  [ConfigRoot.QUEUE]: {
+    redis: {
+      host: process.env.QUEUE_HOST,
+      port: parseInt(process.env.QUEUE_PORT as string),
+    },
+  },
 });
 
 export type Configuration = ReturnType<typeof configuration>;
@@ -64,3 +71,4 @@ export type DatabaseConfig = Configuration[ConfigRoot.DATABASE];
 export type JwtConfig = Configuration['jwt'];
 export type ThrottleConfig = Configuration['security']['throttle'];
 export type CacheConfig = Configuration[ConfigRoot.CACHE];
+export type QueueConfig = Configuration[ConfigRoot.QUEUE];

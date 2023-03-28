@@ -22,6 +22,8 @@ export const validationSchema = Joi.object({
   THROTTLE_LIMIT: Joi.number().default(10),
   CACHE_TTL: Joi.number().default(5),
   CACHE_MAX: Joi.number().default(10),
+  QUEUE_HOST: Joi.string().default('localhost'),
+  QUEUE_PORT: Joi.number().default(6379),
 });
 
 export const validationOptions = {
