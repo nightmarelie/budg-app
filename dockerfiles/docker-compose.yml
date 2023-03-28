@@ -8,9 +8,14 @@ services:
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
       - POSTGRES_DB=${DATABASE_NAME}
     ports:
-      - '5432:5432'
+      - '5432:${DATABASE_PORT}'
     volumes: 
       - db:/var/lib/postgresql/data
+  queue:
+    image: redis:alpine
+    restart: always
+    ports:
+      - 6379:${QUEUE_PORT}
 volumes:
   db:
     driver: local
