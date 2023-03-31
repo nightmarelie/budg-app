@@ -7,4 +7,9 @@ export class PlaygroundProcessor {
   async handleTask(job: Job) {
     console.log(job.data);
   }
+
+  @Process('task1')
+  async handleTask1(job: Job) {
+    console.log(job.data);
+  }
 }
