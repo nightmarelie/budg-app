@@ -1,6 +1,6 @@
 import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
 import { Cache } from 'cache-manager';
-import { Cron } from '@nestjs/schedule';
+import { Cron, CronExpression } from '@nestjs/schedule';
 import { LoggerService } from '../logger';
 
 @Injectable()
@@ -27,8 +27,8 @@ export class PlaygroundService {
     await this.cacheManager.reset();
   }
 
-  @Cron('45 * * * * *')
+  @Cron(CronExpression.EVERY_10_SECONDS)
   handleCron() {
-    this.logger.debug('Called when the current second is 45');
+    this.logger.debug('Called every 10 seconds');
   }
 }
