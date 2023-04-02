@@ -4,6 +4,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { ScheduleModule } from '@nestjs/schedule';
 
 import {
   configuration,
@@ -72,6 +73,7 @@ import { BullModule } from '@nestjs/bull';
       useFactory: (configService: ConfigService) =>
         configService.get<QueueConfig>(ConfigRoot.QUEUE),
     }),
+    ScheduleModule.forRoot(),
     UserModule,
     AuthModule, // TODO: maybe it will be better to enable it globally https://docs.nestjs.com/security/authentication#enable-authentication-globally
     HealthModule,
