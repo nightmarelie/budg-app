@@ -92,6 +92,9 @@ importers:
       react-icons:
         specifier: ^4.7.1
         version: 4.7.1(react@18.2.0)
+      swr:
+        specifier: ^2.0.3
+        version: 2.0.3(react@18.2.0)
       typescript:
         specifier: ^4.7.4
         version: 4.9.4
