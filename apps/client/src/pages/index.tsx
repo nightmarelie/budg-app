@@ -3,10 +3,23 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@ba/styles/Home.module.css";
 import { Colors } from "@ba/theme";
+import { useFetch } from "../hooks";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const { data, error, isLoading } = useFetch(
+    "https://jsonplaceholder.typicode.com/todos/1"
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
   return (
     <>
       <Head>
@@ -17,6 +30,7 @@ export default function Home() {
       </Head>
       <main className={styles.main} style={{ backgroundColor: Colors.orange }}>
         <div className={styles.description}>
+          <pre>{JSON.stringify(data)}</pre>
           <p>
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
